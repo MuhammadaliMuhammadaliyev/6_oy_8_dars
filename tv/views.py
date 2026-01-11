@@ -103,7 +103,7 @@ from rest_framework import status
 
 class TvViewSet(ViewSet):
 
-    # GET /tv/
+
     def list(self, request):
         tv = Tv.objects.all()
         serializer = TvSerializer(tv, many=True)
@@ -115,7 +115,7 @@ class TvViewSet(ViewSet):
         }
         return Response(data, status=status.HTTP_200_OK)
 
-    # POST /tv/
+
     def create(self, request):
         serializer = TvSerializer(data=request.data)
         if serializer.is_valid():
@@ -134,7 +134,7 @@ class TvViewSet(ViewSet):
         }
         return Response(data, status=status.HTTP_400_BAD_REQUEST)
 
-    # GET /tv/{id}/
+
     def retrieve(self, request, pk=None):
         tv = Tv.objects.filter(pk=pk).first()
         if not tv:
@@ -151,7 +151,7 @@ class TvViewSet(ViewSet):
         }
         return Response(data, status=status.HTTP_200_OK)
 
-    # PUT /tv/{id}/
+
     def update(self, request, pk=None):
         tv = Tv.objects.filter(pk=pk).first()
         if not tv:
@@ -176,7 +176,7 @@ class TvViewSet(ViewSet):
             'error': serializer.errors
         }, status=status.HTTP_400_BAD_REQUEST)
 
-    # PATCH /tv/{id}/
+
     def partial_update(self, request, pk=None):
         tv = Tv.objects.filter(pk=pk).first()
         if not tv:
@@ -201,7 +201,7 @@ class TvViewSet(ViewSet):
             'error': serializer.errors
         }, status=status.HTTP_400_BAD_REQUEST)
 
-    # DELETE /tv/{id}/
+
     def destroy(self, request, pk=None):
         tv = Tv.objects.filter(pk=pk).first()
         if not tv:
